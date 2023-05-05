@@ -40,11 +40,28 @@ end_date = "2022-01-31"
 
 authenticate with the API using credentials.json
 
-data = SearchConsole(domain, credentials='credentials.json')
+auth_response = SearchConsole(domain, credentials='credentials.json')
 
 # print the data
 
-print(data)
+# print(auth_response)
+
+report_dict = []
+for i in auth_response['rows']:
+    auth_data = i
+    new_dict = {
+        "query": auth_data["keys"][0],
+        "page": auth_data["keys"][1],
+        "country": auth_data["keys"][2],
+        "device": auth_data["keys"][3],
+        "date": auth_data["keys"][4],
+        "clicks": auth_data["clicks"],
+        "impressions": auth_data["impressions"],
+        "ctr": auth_data["ctr"],
+        "position": auth_data["position"]
+    }
+    report_dict.append(new_dict)
+print(report_dict)
 
 ```
 
