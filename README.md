@@ -8,7 +8,7 @@ searchconsole is a Python library that provides an easy-to-use interface for wor
 
 Before you can use the searchconsole library, you need to generate a credentials.json file that will allow you to authenticate with the Google Search Console API. To generate this file, you can use the Credential class provided by the library.
 ```python
-from searchconsole.credential import Credential
+from credential.credential import Crediential
 
 client_id = "kjahfdnjkeahfnulkjbn38294u2389"
 client_secret = "32u4393kjbjjk3b4bk331094i3jb"
@@ -28,19 +28,27 @@ Credential(client_id=client_id, client_secret=client_secret)
 
 This will create a credentials.json file in your home directory that you can use to authenticate with the API.
 
+
+
+Make sure that you have obtained the credentials.json file. Please note that the refresh token for this library expires after 6 months of inactivity. If you use the library before the expiration date, the expiration time gets extended to another 6 months.
+
+So you don't need to generate the credential.json again and again
+
 # Fetching Data
 
 Once you have generated your credentials.json file, you can use the searchconsole library to fetch data from your Search Console account. Here is an example of how to fetch search analytics data for a given domain:
 ```python
-from searchconsole import SearchConsole
+from searchconsole.searchconsole import Searchconsole
 
-domain = "example.com"
+domain = "https://www.example.com/"
 start_date = "2022-01-01"
-end_date = "2022-01-31"
+
+
+# dont write end date they will automatically update as date.today()
 
 authenticate with the API using credentials.json
 
-auth_response = SearchConsole(domain, credentials='credentials.json')
+auth_response = SearchConsole(domain=domain,start_date=start_date, credentials='credentials.json')
 
 # print the data
 
