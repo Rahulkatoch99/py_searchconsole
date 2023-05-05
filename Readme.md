@@ -49,10 +49,21 @@ print(data)
 ```
 
 # Output:
-```python
+
 
 ["query", "page", "country", "device", "date","impression","clicks","position","ctr"]
-{"query":"console","country":"ind",
+```python
+{
+"query":"console",
+"country":"ind",
+"page":"www.example.com",
+"device":"Desktop",
+"date":"2023-02-13",
+"impression":"23",
+"clicks":"23",
+"position":"2",
+"ctr":"2",
+}
 
 ```
 
